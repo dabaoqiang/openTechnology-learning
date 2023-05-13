@@ -1,18 +1,15 @@
 package com.dbq.principle.depenceInversion;
 
-import com.dbq.principle.depenceInversion.Icourse;
-
 public class Tom {
 
     /**
-     *  啥是依赖倒置了，就是本来我是tom，我要去学课程，我直接在tom的类里面去写，我要学java，我要学python，
-     *  学习课程，是抽象的，还是行为，于是，课程抽象为接口，java，phthotn是其实现，
-     *  tom学那个课程，应该是那个课程的抽象，她不应该依赖是具体的那门课程
-     *
-     *  即，高层模块不依赖底层模块，二者依赖其抽象，
-     *  抽象不依赖细节，细节依赖抽象，
-     *  减少耦合，提高稳定，增强，代码可读性，可维护性
-     *
+     * 啥是依赖倒置了，就是本来我是tom，我要去学课程，我直接在tom的类里面去写，我要学java，我要学python，
+     * 学习课程，是抽象的，还是行为，于是，课程抽象为接口，java，phthotn是其实现，
+     * tom学那个课程，应该是那个课程的抽象，她不应该依赖是具体的那门课程
+     * <p>
+     * 即，高层模块不依赖底层模块，二者依赖其抽象，
+     * 抽象不依赖细节，细节依赖抽象，
+     * 减少耦合，提高稳定，增强，代码可读性，可维护性
      */
 
     private Icourse icourse;

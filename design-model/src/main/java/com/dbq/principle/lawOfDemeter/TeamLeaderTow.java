@@ -1,12 +1,13 @@
 package com.dbq.principle.lawOfDemeter;
 
+/**
+ * @author dabaoqiang
+ */
 public class TeamLeaderTow {
 
-
     public void commandCheckNumber(EmployeeTow employeeTow) {
-        employeeTow.checkNumbeOfCourses();
+        employeeTow.checkNumberOfCourses();
     }
-
 
     public static void main(String[] args) {
         /**

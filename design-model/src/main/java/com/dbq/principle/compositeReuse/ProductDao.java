@@ -16,6 +16,4 @@ public class ProductDao {
         String conncetion = dbConnection.getConnection();
         System.out.println("获取 " + conncetion + ",加入产品");
     }
-
-
 }

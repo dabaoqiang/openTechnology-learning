@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class EmployeeTow {
 
-    public void checkNumbeOfCourses() {
+    public void checkNumberOfCourses() {
         List<Course> list = new ArrayList<Course>();
         for (int i = 0; i < 20; i++) {
             // 迪米特法则，有些对象，与我产生不了关系，就不应该放在这里

@@ -1,5 +1,8 @@
 package com.dbq.principle.liskovSubstitution;
 
+/**
+ * @author dabaoqiang
+ */
 public class Test01 {
 
     public static void reSize(Rectangle rectangle) {

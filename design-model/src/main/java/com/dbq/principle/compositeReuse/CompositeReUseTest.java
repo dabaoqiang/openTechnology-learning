@@ -8,6 +8,7 @@ import com.dbq.principle.compositeReuse.two.ProductDao1;
 /**
  * 少用继承，多用组合
  * 合成复用原则
+ * @author dabaoqiang
  */
 public class CompositeReUseTest {
 

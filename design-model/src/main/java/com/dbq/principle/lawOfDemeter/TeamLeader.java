@@ -14,7 +14,7 @@ public class TeamLeader {
             // 迪米特法则，有些对象，与我产生不了关系，就不应该放在这里
             list.add(new Course());
         }
-        employee.checkNumbeOfCourses(list);
+        employee.checkNumberOfCourses(list);
     }
 
     public static void main(String[] args) {
