@@ -3,7 +3,7 @@ package com.dbq.principle.openClose;
 /**
  * @author dabaoqiang
  */
-public interface Icourse {
+public interface ICourse {
     /**
      * getId
      *

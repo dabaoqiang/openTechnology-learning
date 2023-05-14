@@ -3,7 +3,7 @@ package com.dbq.principle.openClose;
 /**
  * Created by @author dabaoqiang on 2023/5/13.
  */
-public class JavaCourse implements Icourse {
+public class JavaCourse implements ICourse {
 
     private Long id;
 
