@@ -1,12 +1,9 @@
 package com.dbq.study.spring.boot.jpa.controller;
 
 import com.dbq.study.spring.boot.jpa.common.Result;
-import com.dbq.study.spring.boot.jpa.common.ResultCode;
 import com.dbq.study.spring.boot.jpa.dao.UserRepository;
 import com.dbq.study.spring.boot.jpa.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.web.bind.annotation.*;
 
 /**
