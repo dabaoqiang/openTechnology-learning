@@ -12,7 +12,7 @@ public class Result<T> implements Serializable {
 
     private static final long serialVersionUID = 434357098727622813L;
     /**
-     * 给开发人员看的异常状态码
+     * 给开发人员看的状态码
      */
     private int code;
     /**
@@ -23,10 +23,6 @@ public class Result<T> implements Serializable {
      * 给前端提示信息
      */
     private String msg;
-    /**
-     * 给前端用的，请求是否成功
-     */
-    private boolean success;
 
     private Result(IResultCode resultCode) {
         this(resultCode, null, resultCode.getMessage());
@@ -48,7 +44,6 @@ public class Result<T> implements Serializable {
         this.code = code;
         this.data = data;
         this.msg = msg;
-        this.success = ResultCode.SUCCESS.code == code;
     }
 
     public static <T> Result<T> success(String msg) {
