@@ -2,45 +2,43 @@ package com.dbq.study.spring.boot.exception.error;
 
 import com.dbq.study.spring.boot.exception.common.Result;
 import com.dbq.study.spring.boot.exception.common.ResultCode;
-import com.dbq.study.spring.boot.exception.controller.BookController;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.servlet.http.HttpServletRequest;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
  * Created by @author dabaoqiang on 2023/5/17.
  */
-@ControllerAdvice(assignableTypes = {BookController.class})
+@ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(BaseException.class)
     @ResponseBody
-    public Result<?> handleAppException(BaseException ex, HttpServletRequest request) {
-        ErrorResponse errorResponse = new ErrorResponse(ex, request.getRequestURI());
-        return Result.fail(ResultCode.FAILURE, errorResponse.getMessage());
-    }
-
+    @ResponseStatus(value = HttpStatus.NOT_FOUND)
     @ExceptionHandler(value = ResourceNotFoundException.class)
-    public Result<?> handleResourceNotFoundException(ResourceNotFoundException ex, HttpServletRequest request) {
-        ErrorResponse response = new ErrorResponse(ex, request.getRequestURI());
-        return Result.fail(ResultCode.FAILURE, response.getMessage());
+    public Result<?> handleResourceNotFoundException(ResourceNotFoundException e) {
+        if (e.getResultCode() != null) {
+            return Result.fail(e.getResultCode(), e.getMessage());
+        }
+        return Result.fail(e.getMessage());
     }
 
-//    @ExceptionHandler(value = BusinessException.class)
-//    public ResponseEntity<?> handleBusinessException(BusinessException ex, HttpServletRequest request) {
-//        ErrorResponse response = new ErrorResponse(ex, request.getRequestURI());
-//        return new ResponseEntity<>(response, new HttpHeaders(), ex.getError().getStatus());
-//    }
-
-    @ExceptionHandler(value = BusinessException.class)
     @ResponseBody
-    public Result<?> handleBusinessException(BusinessException ex, HttpServletRequest request) {
-        ErrorResponse response = new ErrorResponse(ex, request.getRequestURI());
-        return Result.fail(ResultCode.FAILURE, response.getMessage());
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(value = BusinessException.class)
+    public Result<?> handleBusinessException(BusinessException e) {
+        if (e.getResultCode() != null) {
+            return Result.fail(e.getResultCode(), e.getMessage());
+        }
+        return Result.fail(e.getMessage());
+    }
+
+    @ResponseBody
+    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+    @ExceptionHandler(Exception.class)
+    public Result<?> handleAppException(Exception e) {
+        return Result.fail(ResultCode.INTERNAL_SERVER_ERROR, e.getMessage());
     }
 
 }
