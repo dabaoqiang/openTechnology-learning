@@ -23,7 +23,7 @@ public class BookController {
         return Result.success(books);
     }
 
-    @DeleteMapping("/v1//books/{id}")
+    @DeleteMapping("/v1/books/{id}")
     public Result deleteBookById(@PathVariable("id") int id) {
         books.remove(id);
         return Result.success(books);
