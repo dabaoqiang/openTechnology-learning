@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dbq.mybatis.ArticleMapper">
+    <resultMap id="BaseResultMap" type="com.dbq.entity.Article">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="author" property="author"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, title, author
+    </sql>
+
+    <select id="getAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from article;
+    </select>
+
+    <select id="getOne" parameterType="java.lang.Long" resultMap="BaseResultMap" >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM article
+        WHERE id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="com.dbq.entity.Article">
+        insert into
+            article
+            (title,author)
+        values
+            (#{title},#{author});
+    </insert>
+
+    <update id="update" parameterType="com.dbq.entity.Article">
+        update
+        article
+        set
+        <if test="title != null">title=#{title},</if>
+        <if test="author != null">author=#{author},</if>
+        where id=#{id}
+    </update>
+    <delete id="delete">
+        delete from
+            article
+        where
+            id=#{id}
+    </delete>
+</mapper>

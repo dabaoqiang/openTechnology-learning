@@ -1,0 +1,11 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: xq
+    password: xq123!
+    url: jdbc:mysql://101.43.18.117:3306/db_example
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
